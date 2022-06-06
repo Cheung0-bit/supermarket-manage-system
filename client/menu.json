@@ -1,0 +1,90 @@
+[{
+  "roleIds": [1, 2],
+  "path": "/system",
+  "component": "layout",
+  "name": "system",
+  "hidden": false,
+  "meta": {
+    "title": "系统管理",
+    "icon": "system"
+  },
+  "children": [{
+      "roleIds": [1, 2],
+      "path": "/mgr",
+      "component": "views/system/user/index",
+      "name": "mgr",
+      "hidden": false,
+      "meta": {
+        "title": "用户管理",
+        "icon": "user"
+      }
+    },
+    {
+      "roleIds": [1,2],
+      "path": "/role",
+      "component": "views/system/role/index",
+      "name": "role",
+      "hidden": false,
+      "meta": {
+        "title": "角色管理",
+        "icon": "peoples"
+      }
+    },
+    {
+      "roleIds": [1, 2],
+      "path": "/power",
+      "component": "views/system/power/index",
+      "name": "power",
+      "hidden": false,
+      "meta": {
+        "title": "权限管理",
+        "icon": "power"
+      }
+    },
+    {
+      "roleIds": [1, 2],
+      "path": "/eva",
+      "component": "views/system/eva/index",
+      "name": "eva",
+      "hidden": false,
+      "meta": {
+        "title": "测评管理",
+        "icon": "eva"
+      }
+    }
+  ]
+},{
+  "roleIds": [1, 2],
+  "path": "/document",
+  "component": "layout",
+  "name": "document",
+  "hidden": false,
+  "meta": {
+    "title": "接口文档",
+    "icon": "documentation"
+  },
+  "children": [{
+      "roleIds": [1, 2],
+      "path": "/swagger",
+      "component": "views/document/swagger/index",
+      "name": "swagger",
+      "hidden": false,
+      "meta": {
+        "title": "Swagger模式",
+        "icon": "swagger"
+      }
+    },
+    {
+      "roleIds": [1],
+      "path": "/knife4j",
+      "component": "views/document/knife4j/index",
+      "name": "knife4j",
+      "hidden": false,
+      "meta": {
+        "title": "Knife4j模式",
+        "icon": "knife4j"
+      }
+    }
+  ]
+}]
+
