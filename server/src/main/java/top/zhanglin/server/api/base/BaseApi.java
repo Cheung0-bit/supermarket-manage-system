@@ -45,10 +45,8 @@ public class BaseApi {
     @GetMapping("/loginInfo")
     @ApiOperation("获取登录信息")
     @LogTrack("登录信息")
-    public SaResult loginInfo(HttpServletRequest httpServletRequest) {
-        HashMap<String, Object> loginInfo = new HashMap<>();
-        loginInfo.put("Token-Info", StpUtil.getTokenValue());
-        return SaResult.data(loginInfo);
+    public SaResult loginInfo() {
+        return baseService.getInfo();
     }
 
 }

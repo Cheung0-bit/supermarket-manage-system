@@ -11,12 +11,19 @@ import top.zhanglin.server.domian.LogInfo;
  */
 public class LogUtil {
 
-    public static LogInfo generateLogInfo(String functionName, String logName, String outParam) {
-        String username = StpUtil.getLoginId().toString();
-        String roleName = StpUtil.getExtra("roleName").toString();
+    public static LogInfo generateLogInfo(String functionName, String logName, String outParam, boolean isAuthed) {
         String url = ServletUtil.getRequestURI();
         String ip = ServletUtil.getRemoteHost();
         String inParam = ServletUtil.getQueryParam();
+        String username = null;
+        String roleName = null;
+        if (isAuthed) {
+            username = StpUtil.getLoginId().toString();
+            roleName = StpUtil.getExtra("roleName").toString();
+        } else {
+            username = "Unknown-User";
+            roleName = "Unknown-Role";
+        }
         return new LogInfo(logName, username, roleName, url, ip, functionName, inParam, outParam);
     }
 

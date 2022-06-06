@@ -8,7 +8,7 @@ const state = {
   name: '',
   avatar: '',
   permissions: null,
-  roles: [],
+  role: null,
   routes: [],
   addRoutes: [],
 };
@@ -35,8 +35,8 @@ const mutations = {
     state.permissions = permissions;
   },
   // 设置角色
-  SET_ROLES: (state, roles) => {
-    state.roles[0] = roles;
+  SET_ROLE: (state, role) => {
+    state.role = role;
   },
   // 设置路由
   SET_ROUTES: (state, routes) => {
@@ -81,16 +81,13 @@ const actions = {
         .then(response => {
           const { data } = response.data;
           const { profile, permissions } = data;
-          console.log('profile', profile);
-          console.log('permissions', permissions);
-          console.log('roles', roles);
-          console.log('menus', menus);
           commit('SET_NAME', profile.username);
           commit('SET_AVATAR', profile.avatar);
           commit('SET_PROFILE', profile);
-          commit('SET_ROLES', roles);
+          commit('SET_ROLE', profile.sysRole);
           commit('SET_PERMISSIONS', permissions);
-          const routes = traverseRoutes(menus);
+          const menu = JSON.parse(profile.sysRole.menu);
+          const routes = traverseRoutes(menu);
           commit('SET_ROUTES', routes);
           data.routes = routes;
           resolve(data);
@@ -110,7 +107,7 @@ const actions = {
           commit('SET_NAME', '');
           commit('SET_AVATAR', '');
           commit('SET_PROFILE', {});
-          commit('SET_ROLES', []);
+          commit('SET_ROLE', null);
           commit('SET_PERMISSIONS', []);
           removeToken();
           resetRouter();

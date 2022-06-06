@@ -1,25 +1,25 @@
 <template>
   <div class="app-container">
     <div class="user">
-      <h2>欢迎您 {{ user.roleSet[0].description }}</h2>
+      <h2>欢迎您 {{ user.sysRole.description }}</h2>
     </div>
     <el-row class="user-content" style="">
       <el-col :span="6" class="profile">
         <img class="user-avatar" :src="user.avatar" /><br />
         <p>
           <span class="title"
-            ><i class="el-icon-phone"></i>&nbsp;&nbsp;{{ user.phone }}</span
+            ><i class="el-icon-phone"></i>&nbsp;&nbsp;159505672146</span
           >
         </p>
         <p>
           <span class="title"
-            ><i class="el-icon-message"></i>&nbsp;&nbsp;{{ user.email }}</span
+            ><i class="el-icon-message"></i>&nbsp;&nbsp;cheung0-bit@qq.com</span
           >
         </p>
         <p>
           <span class="title"
             ><i class="el-icon-open"></i>&nbsp;&nbsp;{{
-              user.enable == true ? "启用" : "禁用"
+              user.enable == true ? '启用' : '禁用'
             }}</span
           >
         </p>
@@ -36,23 +36,23 @@
             <el-form label-width="80px">
               <h4>基本信息</h4>
               <el-form-item label="名称">
-                <span>{{ user.nickname }}</span>
+                <span>{{ user.username }}</span>
               </el-form-item>
               <el-form-item label="密码">
                 <span>{{ user.password }}</span>
               </el-form-item>
               <el-form-item label="状态">
-                <span>{{ user.status }}</span>
+                <span>{{ user.enable ? '启用' : '冻结' }}</span>
               </el-form-item>
               <el-form-item label="签名">
                 <span>{{ user.signature }}</span>
               </el-form-item>
               <h4>联系信息</h4>
               <el-form-item label="手机">
-                <span>{{ user.phone }}</span>
+                <span>15950562146</span>
               </el-form-item>
               <el-form-item label="邮箱">
-                <span> {{ user.email }}</span>
+                <span> cheung0-bit@qq.com</span>
               </el-form-item>
               <el-form-item label="地址">
                 <span> 南京麦趣科技 </span>
@@ -111,7 +111,7 @@
               </el-row>
               <el-form-item>
                 <el-button type="primary" @click="updatePwd">{{
-                  $t("button.submit")
+                  $t('button.submit')
                 }}</el-button>
               </el-form-item>
             </el-form>
@@ -124,10 +124,10 @@
 
 <script src="./profile.js"></script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-@import "src/styles/common.scss";
+<style lang="scss" scoped>
+@import 'src/styles/common.scss';
+
 .el-form-item {
   margin-bottom: 15px;
 }
 </style>
-

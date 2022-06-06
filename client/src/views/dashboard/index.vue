@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container" id="dashboard">
     <div class="dashboard-text">
-      欢迎光临: <strong>{{ roles }}</strong>
+      欢迎光临: <strong>{{ role.description }}</strong>
     </div>
 
     <el-row :gutter="20">

@@ -21,16 +21,16 @@ export function login(data) {
 // 获取用户信息
 export function getInfo() {
   return request({
-    url: '/user/account',
+    url: '/loginInfo',
     method: 'get',
   });
 }
 
 // 登出
-export function logout(token) {
+export function logout() {
   return request({
     url: '/logout',
-    method: 'post',
+    method: 'get',
   });
 }
 
@@ -44,13 +44,5 @@ export function updatePwd(params) {
     url: '/user/updatePassword',
     method: 'put',
     data: qs.stringify(params),
-  });
-}
-
-export function getQrcodeStatus(params) {
-  return request({
-    url: '/account/qrcode/getRet',
-    method: 'get',
-    params,
   });
 }

@@ -1,126 +1,156 @@
-import { getList } from '@/api/system/notice'
-import { mapGetters } from 'vuex'
-import ECharts from 'vue-echarts/components/ECharts'
-import 'echarts/lib/chart/bar'
-import 'echarts/lib/chart/line'
-import 'echarts/lib/chart/pie'
-import 'echarts/lib/chart/map'
-import 'echarts/lib/chart/radar'
-import 'echarts/lib/chart/scatter'
-import 'echarts/lib/chart/effectScatter'
-import 'echarts/lib/component/tooltip'
-import 'echarts/lib/component/polar'
-import 'echarts/lib/component/geo'
-import 'echarts/lib/component/legend'
-import 'echarts/lib/component/title'
-import 'echarts/lib/component/visualMap'
-import 'echarts/lib/component/dataset'
-import 'echarts/map/js/world'
-import 'zrender/lib/svg/svg'
-import elementResizeDetectorMaker from "element-resize-detector"
+import { getList } from '@/api/system/notice';
+import { mapGetters } from 'vuex';
+import ECharts from 'vue-echarts/components/ECharts';
+import 'echarts/lib/chart/bar';
+import 'echarts/lib/chart/line';
+import 'echarts/lib/chart/pie';
+import 'echarts/lib/chart/map';
+import 'echarts/lib/chart/radar';
+import 'echarts/lib/chart/scatter';
+import 'echarts/lib/chart/effectScatter';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/polar';
+import 'echarts/lib/component/geo';
+import 'echarts/lib/component/legend';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/visualMap';
+import 'echarts/lib/component/dataset';
+import 'echarts/map/js/world';
+import 'zrender/lib/svg/svg';
+import elementResizeDetectorMaker from 'element-resize-detector';
 export default {
   name: 'dashboard',
   components: {
-    chart: ECharts
+    chart: ECharts,
   },
   data() {
-    const data = []
+    const data = [];
     for (let i = 0; i <= 360; i++) {
-      const t = i / 180 * Math.PI
-      const r = Math.sin(2 * t) * Math.cos(2 * t)
-      data.push([r, i])
+      const t = (i / 180) * Math.PI;
+      const r = Math.sin(2 * t) * Math.cos(2 * t);
+      data.push([r, i]);
     }
     return {
       notice: [],
       lineData: {
         title: {
-          text: ''
+          text: '',
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
         },
         legend: {
-          data: [this.$t('dashboard.email'), this.$t('dashboard.ad'), this.$t('dashboard.vedio'), this.$t('dashboard.direct'), this.$t('dashboard.searchEngine')]
+          data: [
+            this.$t('dashboard.email'),
+            this.$t('dashboard.ad'),
+            this.$t('dashboard.vedio'),
+            this.$t('dashboard.direct'),
+            this.$t('dashboard.searchEngine'),
+          ],
         },
         grid: {
           left: '3%',
           right: '4%',
           bottom: '3%',
-          containLabel: true
+          containLabel: true,
         },
         toolbox: {
           feature: {
-            saveAsImage: {}
-          }
+            saveAsImage: {},
+          },
         },
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: [this.$t('common.week.mon'), this.$t('common.week.tue'), this.$t('common.week.wed'), this.$t('common.week.thu'), this.$t('common.week.fri'), this.$t('common.week.sat'), this.$t('common.week.sun')]
+          data: [
+            this.$t('common.week.mon'),
+            this.$t('common.week.tue'),
+            this.$t('common.week.wed'),
+            this.$t('common.week.thu'),
+            this.$t('common.week.fri'),
+            this.$t('common.week.sat'),
+            this.$t('common.week.sun'),
+          ],
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
         },
         series: [
           {
             name: this.$t('dashboard.email'),
             type: 'line',
             stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: [120, 132, 101, 134, 90, 230, 210],
           },
           {
             name: this.$t('dashboard.ad'),
             type: 'line',
             stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            data: [220, 182, 191, 234, 290, 330, 310],
           },
           {
             name: this.$t('dashboard.vedio'),
             type: 'line',
             stack: '总量',
-            data: [150, 232, 201, 154, 190, 330, 410]
+            data: [150, 232, 201, 154, 190, 330, 410],
           },
           {
             name: this.$t('dashboard.direct'),
             type: 'line',
             stack: '总量',
-            data: [320, 332, 301, 334, 390, 330, 320]
+            data: [320, 332, 301, 334, 390, 330, 320],
           },
           {
             name: this.$t('dashboard.searchEngine'),
             type: 'line',
             stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          }
-        ]
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+          },
+        ],
       },
       barData: {
         xAxis: {
           type: 'category',
-          data: [this.$t('common.week.mon'), this.$t('common.week.tue'), this.$t('common.week.wed'), this.$t('common.week.thu'), this.$t('common.week.fri'), this.$t('common.week.sat'), this.$t('common.week.sun')]
+          data: [
+            this.$t('common.week.mon'),
+            this.$t('common.week.tue'),
+            this.$t('common.week.wed'),
+            this.$t('common.week.thu'),
+            this.$t('common.week.fri'),
+            this.$t('common.week.sat'),
+            this.$t('common.week.sun'),
+          ],
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
         },
-        series: [{
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
-        }]
+        series: [
+          {
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: 'bar',
+          },
+        ],
       },
       pieData: {
         title: {
           text: this.$t('dashboard.userFrom'),
           subtext: '纯属虚构',
-          x: 'center'
+          x: 'center',
         },
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: [this.$t('dashboard.email'), this.$t('dashboard.ad'), this.$t('dashboard.vedio'), this.$t('dashboard.direct'), this.$t('dashboard.searchEngine')]
+          data: [
+            this.$t('dashboard.email'),
+            this.$t('dashboard.ad'),
+            this.$t('dashboard.vedio'),
+            this.$t('dashboard.direct'),
+            this.$t('dashboard.searchEngine'),
+          ],
         },
         series: [
           {
@@ -133,56 +163,59 @@ export default {
               { value: 310, name: this.$t('dashboard.email') },
               { value: 234, name: this.$t('dashboard.ad') },
               { value: 135, name: this.$t('dashboard.vedio') },
-              { value: 1548, name: this.$t('dashboard.searchEngine') }
+              { value: 1548, name: this.$t('dashboard.searchEngine') },
             ],
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          }
-        ]
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+          },
+        ],
       },
-      tableData: [{
-        date: '2020-05-04',
-        name: '张林',
-        address: '南京信息工程大学文园17栋'
-      }, {
-        date: '2020-05-04',
-        name: '张林',
-        address: '南京信息工程大学文园17栋'
-      }, {
-        date: '2020-05-04',
-        name: '张林',
-        address: '南京信息工程大学文园17栋'
-      }, {
-        date: '2020-05-04',
-        name: '张林',
-        address: '南京信息工程大学文园17栋'
-      }]
-    }
+      tableData: [
+        {
+          date: '2020-05-04',
+          name: '张林',
+          address: '南京信息工程大学文园17栋',
+        },
+        {
+          date: '2020-05-04',
+          name: '张林',
+          address: '南京信息工程大学文园17栋',
+        },
+        {
+          date: '2020-05-04',
+          name: '张林',
+          address: '南京信息工程大学文园17栋',
+        },
+        {
+          date: '2020-05-04',
+          name: '张林',
+          address: '南京信息工程大学文园17栋',
+        },
+      ],
+    };
   },
   computed: {
-    ...mapGetters([
-      'name','roles'
-    ])
+    ...mapGetters(['name', 'role']),
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
-  mounted(){
+  mounted() {
     //绑定echart图表跟随窗口大小自动缩放
-    let that = this
-    let erd = elementResizeDetectorMaker()
-    erd.listenTo(document.getElementById("dashboard"),(element)=>{
-      that.$nextTick(()=>{
-        that.$refs.lineChart.resize()
-        that.$refs.barChart.resize()
-        that.$refs.pieChart.resize()
-      })
-    })
+    let that = this;
+    let erd = elementResizeDetectorMaker();
+    erd.listenTo(document.getElementById('dashboard'), element => {
+      that.$nextTick(() => {
+        that.$refs.lineChart.resize();
+        that.$refs.barChart.resize();
+        that.$refs.pieChart.resize();
+      });
+    });
   },
   methods: {
     fetchData() {
@@ -199,6 +232,6 @@ export default {
       //   }
       //   self.listLoading = false
       // })
-    }
-  }
-}
+    },
+  },
+};

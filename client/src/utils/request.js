@@ -37,9 +37,9 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data;
-    if (res.code != 0) {
+    if (res.code != 200) {
       Message({
-        message: res.message,
+        message: res.msg,
         type: 'error',
       });
       return Promise.reject(res);
@@ -48,6 +48,8 @@ service.interceptors.response.use(
     }
   },
   error => {
+    // 失败后
+    console.log(error); // for debug
     if (error.response.status === 401) {
       store.dispatch('user/logout').then(() => {
         router.replace({

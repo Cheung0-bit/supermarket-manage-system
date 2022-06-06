@@ -1,5 +1,6 @@
 package top.zhanglin.server.annotation.aspect;
 
+import cn.dev33.satoken.util.SaResult;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -30,15 +31,16 @@ public class LogTrackAspect {
     public void access() {
     }
 
-    @AfterReturning(returning = "rvt", pointcut = "@annotation(top.zhanglin.server.annotation.LogTrack)")
-    public Object afterExec(JoinPoint jp, Object rvt) {
+    @AfterReturning(returning = "saResult", pointcut = "@annotation(top.zhanglin.server.annotation.LogTrack)")
+    public Object afterExec(JoinPoint jp, SaResult saResult) {
         MethodSignature signature = (MethodSignature) jp.getSignature();
         LogTrack annotation = signature.getMethod().getAnnotation(LogTrack.class);
         String functionName = signature.getName();
         String logName = annotation.value();
-        LogInfo logInfo = LogUtil.generateLogInfo(functionName, logName, rvt.toString());
+        boolean isAuthed = saResult.getCode() == SaResult.CODE_SUCCESS;
+        LogInfo logInfo = LogUtil.generateLogInfo(functionName, logName, saResult.toString(), isAuthed);
         logTrackMapper.insert(logInfo);
-        return rvt;
+        return saResult;
     }
 
 }
