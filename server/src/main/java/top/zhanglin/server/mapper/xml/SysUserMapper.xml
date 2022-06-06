@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhanglin.server.mapper.SysUserMapper">
+
+    <resultMap type="SysUser" id="SysUserMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="username" column="user_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="signature" column="signature" jdbcType="VARCHAR"/>
+        <result property="enable" column="enable" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <association property="sysRole" select="top.zhanglin.server.mapper.SysRoleMapper.queryById" column="role_id"
+                     fetchType="eager">
+        </association>
+    </resultMap>
+
+    <select id="queryById" resultMap="SysUserMap">
+        select *
+        from sys_user
+        where id = #{id}
+    </select>
+
+    <select id="queryByNameSysUser" resultMap="SysUserMap">
+        select *
+        from sys_user
+        where user_name = #{username}
+    </select>
+
+    <select id="queryAll" resultMap="SysUserMap">
+        select *
+        from sys_user
+        where IFNULL(user_name, '') LIKE CONCAT('%', ifnull(#{username},
+                                                            ''), '%')
+    </select>
+
+</mapper>
+

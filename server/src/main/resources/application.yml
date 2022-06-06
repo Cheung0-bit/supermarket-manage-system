@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: prod
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 20MB
+
+# Sa-Token 可以选择0配置启动框架 也可以通过增加配置个性化定制框架
+sa-token:
+  # token名称 (同时也是cookie|header名称)
+  token-name: Authorization
+  # token有效期，单位s 默认30天, -1代表永不过期
+  timeout: 2592000
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)
+  is-share: false
+  # token风格
+  token-style: uuid
+  # 是否输出操作日志
+  is-log: false
+  # jwt秘钥
+  jwt-secret-key: zhanglin
+
+# 系统自定义配置
+supermarket:
+  # Document 配 置 信 息
+  swagger:
+    # 文 档 标 题
+    title: 小型超市管理系统接口文档
+    # 是 否 开 启
+    enable: true
+    # 分 组 名 称
+    group-name: 核心业务
+    # 描 述 信 息
+    description: 接口API测试文档，有问题及时反馈
+    # 扫 包 路 径
+    scan-package: top.zhanglin.server.api
+    # 版 本 信 息
+    version: V1.0.0
+    # 联 系 人 信 息
+    contact-name: 张 林
+    # 联 系 人 链 接
+    contact-url: https://wpa.qq.com/msgrd?v=3&uin=1725525653&site=qq&menu=yes
+    # 联 系 人 邮 箱
+    contact-email: cheung0-bit@qq.com
+
+# Mybatis 配 置
+mybatis:
+  # 配 置 扫 描
+  mapper-locations: classpath*:**/xml/**.xml
+  type-aliases-package: top.zhanglin.server

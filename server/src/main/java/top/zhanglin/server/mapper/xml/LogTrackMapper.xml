@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhanglin.server.mapper.LogTrackMapper">
+
+    <resultMap type="LogInfo" id="LogInfoMap">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="logName" column="log_name" jdbcType="VARCHAR"/>
+        <result property="username" column="user_name" jdbcType="VARCHAR"/>
+        <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="ip" column="ip" jdbcType="VARCHAR"/>
+        <result property="functionName" column="function_name" jdbcType="VARCHAR"/>
+        <result property="inParam" column="in_param" jdbcType="VARCHAR"/>
+        <result property="outParam" column="out_param" jdbcType="LONGVARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into log_info (log_name, user_name, role_name, url, ip, function_name, in_param, out_param)
+        values (#{logName}, #{username}, #{roleName}, #{url}, #{ip}, #{functionName}, #{inParam}, #{outParam})
+    </insert>
+
+
+</mapper>
+

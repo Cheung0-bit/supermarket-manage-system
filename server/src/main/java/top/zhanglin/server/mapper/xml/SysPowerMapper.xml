@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhanglin.server.mapper.SysPowerMapper">
+
+    <resultMap type="SysPower" id="SysPowerMap">
+        <id property="powerId" column="power_id" jdbcType="INTEGER"/>
+        <result property="powerName" column="power_name" jdbcType="VARCHAR"/>
+        <result property="powerCode" column="power_code" jdbcType="VARCHAR"/>
+        <result property="enable" column="enable" jdbcType="BOOLEAN"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="queryAllByRoleId" resultMap="SysPowerMap">
+        select sp.*
+        from sys_power sp
+                 left join sys_role_power srp on sp.power_id = srp.power_id
+                 left join sys_role sr on srp.role_id = sr.role_id
+        where sr.role_id = #{roleId}
+    </select>
+
+</mapper>
+
