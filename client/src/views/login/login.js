@@ -66,7 +66,7 @@ export default {
             .dispatch('user/login', this.loginForm)
             .then(() => {
               this.loading = false;
-              if (this.redirect === '/') {
+              if (this.redirect === '/' || this.redirect === '/dashboard') {
                 this.$notify({
                   title: '成功',
                   message: `欢迎回来${this.loginForm.username}`,

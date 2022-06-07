@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
-import java.io.IOException;
-
 /**
  * @author Lin
  */
@@ -15,7 +13,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class ServerApplication {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(ServerApplication.class, args);
         Environment env = applicationContext.getEnvironment();
         String port = env.getProperty("server.port");

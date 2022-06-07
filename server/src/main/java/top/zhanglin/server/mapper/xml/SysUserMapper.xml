@@ -16,16 +16,52 @@
         </association>
     </resultMap>
 
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_user (role_id, user_name, password, avatar, signature, enable)
+        values (#{sysRole.roleId}, #{username}, #{password}, #{avatar}, #{signature}, #{enable})
+    </insert>
+
+    <update id="updateEnable">
+        update sys_user
+        set enable = #{enable}
+        where id = #{userId}
+    </update>
+
+    <update id="update">
+        update sys_user
+        set role_id   = #{sysRole.roleId}
+          , user_name = #{username}
+          , password  = #{password}
+          , signature = #{signature}
+          , avatar    = #{avatar}
+          , enable    = #{enable}
+        where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update sys_user
+        set password = #{password}
+        where id = #{userId}
+    </update>
+
+    <delete id="deleteByIdInt">
+        delete
+        from sys_user
+        where id = #{userId}
+    </delete>
+
     <select id="queryById" resultMap="SysUserMap">
         select *
         from sys_user
-        where id = #{id}
+        where id = #{userId}
+        limit 1
     </select>
 
     <select id="queryByNameSysUser" resultMap="SysUserMap">
         select *
         from sys_user
         where user_name = #{username}
+        limit 1
     </select>
 
     <select id="queryAll" resultMap="SysUserMap">

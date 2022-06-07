@@ -1,5 +1,6 @@
 package top.zhanglin.server.api.base;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import io.swagger.annotations.Api;
@@ -9,8 +10,6 @@ import top.zhanglin.server.annotation.LogTrack;
 import top.zhanglin.server.service.BaseService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 /**
  * <基本API>
@@ -36,6 +35,7 @@ public class BaseApi {
 
     @GetMapping("/logout")
     @ApiOperation("注销")
+    @SaCheckLogin
     @LogTrack("用户注销")
     public SaResult logout() {
         StpUtil.logout();
@@ -44,7 +44,8 @@ public class BaseApi {
 
     @GetMapping("/loginInfo")
     @ApiOperation("获取登录信息")
-    @LogTrack("登录信息")
+    @SaCheckLogin
+    @LogTrack("获取登录信息")
     public SaResult loginInfo() {
         return baseService.getInfo();
     }

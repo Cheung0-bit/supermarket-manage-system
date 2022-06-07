@@ -40,6 +40,9 @@ public class BaseServiceImpl implements BaseService {
         if (sysUser == null) {
             return SaResult.error("用户不存在");
         }
+        if (!sysUser.getEnable()) {
+            return SaResult.error("用户被冻结");
+        }
         if (!sysUser.getPassword().equals(SaSecureUtil.sha256(password))) {
             return SaResult.error("密码不正确");
         }

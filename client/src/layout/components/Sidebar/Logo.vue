@@ -1,3 +1,8 @@
+<!--
+ * @Description: 
+ * @Author: cheung0
+ * @Date: 2022-06-05 17:22:40
+-->
 <template>
   <div class="sidebar-logo-container" :class="{ collapse: collapse }">
     <transition name="sidebarLogoFade">
@@ -20,7 +25,7 @@
 
 <script>
 export default {
-  name: "SidebarLogo",
+  name: 'SidebarLogo',
   props: {
     collapse: {
       type: Boolean,
@@ -29,8 +34,8 @@ export default {
   },
   data() {
     return {
-      title: "麦趣后台中心",
-      logo: "https://images.maiquer.tech/images/aa845035.png",
+      title: '小型超市管理系统',
+      logo: 'https://images.maiquer.tech/images/67383b74.png',
     };
   },
 };

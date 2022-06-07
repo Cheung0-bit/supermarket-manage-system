@@ -1,8 +1,10 @@
 package top.zhanglin.server.api.rbac;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.util.SaResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 import top.zhanglin.server.domian.SysUser;
 import top.zhanglin.server.service.SysUserService;
@@ -25,6 +27,7 @@ public class SysUserApi {
     private SysUserService sysUserService;
 
     @PostMapping("/queryAll")
+    @SaCheckPermission("sys:user:queryAll")
     @ApiOperation("批量查询")
     public SaResult queryAll(@RequestParam(value = "page", required = false) Integer page,
                              @RequestParam(value = "limit", required = false) Integer limit,
@@ -33,15 +36,56 @@ public class SysUserApi {
     }
 
     @PostMapping("/add")
+    @SaCheckPermission("sys:user:add")
     @ApiOperation("添加用户")
     public SaResult add(@RequestBody SysUser sysUser) {
-        return sysUserService.insert(sysUser);
+        if (sysUser.getId() == null) {
+            return sysUserService.insert(sysUser);
+        } else {
+            return sysUserService.update(sysUser);
+        }
     }
 
     @DeleteMapping("/delete/{id}")
+    @SaCheckPermission("sys:user:delete")
     public SaResult delete(@PathVariable("id") Integer userId) {
         return sysUserService.delete(userId);
     }
 
+    /**
+     * @param userId
+     * @param enable
+     * @return
+     */
+    @PutMapping("/updateEnable")
+    @SaCheckPermission("sys:user:updateEnable")
+    @ApiOperation(value = "修改用户启用", notes = "注意正确传参")
+    public SaResult updateEnable(@RequestParam Integer userId, @RequestParam Boolean enable) {
+        return sysUserService.updateEnable(userId, enable);
+    }
+
+    @PostMapping("/resetPassword")
+    @SaCheckPermission("sys:user:resetPassword")
+    @ApiOperation(value = "重置密码")
+    public SaResult resetPassword(@RequestParam Integer userId) {
+        return sysUserService.resetPassword(userId);
+    }
+
+    /**
+     * 管理员修改密码
+     *
+     * @param oldPassword
+     * @param newPassword
+     * @param confirmPassword
+     * @return
+     */
+    @PutMapping("/updatePassword")
+    @SaCheckPermission("sys:user:updatePassword")
+    @ApiOperation(value = "修改用户密码", notes = "注意正确传参")
+    public SaResult updatePassword(@RequestParam String oldPassword
+            , @RequestParam String newPassword
+            , @RequestParam String confirmPassword) {
+        return sysUserService.updatePasswd(oldPassword, newPassword, confirmPassword);
+    }
 
 }

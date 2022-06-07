@@ -32,6 +32,14 @@ public interface SysUserService {
     SaResult insert(SysUser sysUser);
 
     /**
+     * 编辑用户
+     *
+     * @param sysUser
+     * @return
+     */
+    SaResult update(SysUser sysUser);
+
+    /**
      * 修改信息
      *
      * @param sysUser
@@ -48,6 +56,14 @@ public interface SysUserService {
      * @return
      */
     SaResult updatePasswd(String oldPasswd, String confirmPasswd, String newPasswd);
+
+    /**
+     * 重置密码
+     *
+     * @param userId
+     * @return
+     */
+    SaResult resetPassword(Integer userId);
 
     /**
      * 更新启用

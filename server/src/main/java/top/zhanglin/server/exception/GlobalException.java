@@ -4,11 +4,9 @@ import cn.dev33.satoken.exception.DisableLoginException;
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotPermissionException;
 import cn.dev33.satoken.exception.NotRoleException;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import top.zhanglin.server.annotation.LogTrack;
 import top.zhanglin.server.domian.LogInfo;
 import top.zhanglin.server.mapper.LogTrackMapper;
 import top.zhanglin.server.model.AjaxJson;
@@ -68,6 +66,7 @@ public class GlobalException {
             DisableLoginException ee = (DisableLoginException) e;
             aj = AjaxJson.getNotJur("账号被封禁：" + ee.getDisableTime() + "秒后解封");
         } else {    // 普通异常, 输出：500 + 异常信息
+            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), true);
             aj = AjaxJson.getError(e.getMessage());
         }
         logTrackMapper.insert(logInfo);

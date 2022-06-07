@@ -66,6 +66,12 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <!-- 分 页 组 件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.1</version>
+        </dependency>
         <!-- 数 据 库 连 接 工 具 -->
         <dependency>
             <groupId>mysql</groupId>

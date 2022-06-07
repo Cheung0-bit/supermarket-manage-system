@@ -5,51 +5,27 @@
       <el-row :gutter="20">
         <el-col :span="4">
           <el-input
-            v-model="listQuery.userName"
+            v-model="listQuery.username"
             size="mini"
             placeholder="请输入用户名"
             @keyup.enter.native="search"
           ></el-input>
         </el-col>
-        <el-col :span="4">
-          <el-input
-            v-model="listQuery.nickName"
-            size="mini"
-            placeholder="请输入昵称"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-col>
-        <el-col :span="4">
-          <el-input
-            v-model="listQuery.phone"
-            size="mini"
-            placeholder="请输入手机号"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-col>
-        <el-col :span="4">
-          <el-input
-            v-model="listQuery.email"
-            size="mini"
-            placeholder="请输入邮箱"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-col>
-
+        <el-col :span="4"> </el-col>
         <el-col :span="4">
           <el-button
             type="success"
             size="mini"
             icon="el-icon-search"
             @click.native="search"
-            >{{ $t("button.search") }}</el-button
+            >{{ $t('button.search') }}</el-button
           >
           <el-button
             type="primary"
             size="mini"
             icon="el-icon-refresh"
             @click.native="reset"
-            >{{ $t("button.reset") }}</el-button
+            >{{ $t('button.reset') }}</el-button
           >
         </el-col>
       </el-row>
@@ -63,7 +39,7 @@
             icon="el-icon-plus"
             @click.native="add"
           >
-            {{ $t("button.add") }}
+            {{ $t('button.add') }}
           </el-button>
           <el-button
             type="primary"
@@ -71,7 +47,7 @@
             icon="el-icon-edit"
             @click.native="edit"
           >
-            {{ $t("button.edit") }}
+            {{ $t('button.edit') }}
           </el-button>
           <el-button
             type="danger"
@@ -79,7 +55,7 @@
             icon="el-icon-delete"
             @click.native="remove"
           >
-            {{ $t("button.delete") }}
+            {{ $t('button.delete') }}
           </el-button>
           <el-button
             type="danger"
@@ -87,7 +63,7 @@
             icon="el-icon-refresh-right"
             @click.native="resetPwd"
           >
-            {{ $t("button.resetPwd") }}
+            {{ $t('button.resetPwd') }}
           </el-button>
 
           <el-button
@@ -96,7 +72,7 @@
             icon="el-icon-s-operation"
             @click.native="openRole"
           >
-            {{ $t("button.roleAllocate") }}</el-button
+            {{ $t('button.roleAllocate') }}</el-button
           >
         </el-col>
       </el-row>
@@ -116,48 +92,28 @@
         >
           <el-table-column label="系统用户名">
             <template slot-scope="scope">
-              <el-tag type="success" size="mini">
-                {{ scope.row.username }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column label="角色" align="left">
-            <template slot-scope="scope">
-              <div
-                v-for="authority in scope.row.roleSet"
-                :key="authority.roleId"
-              >
-                <el-tag type="danger" size="mini">
-                  {{ authority.description }}
-                </el-tag>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="昵称">
-            <template slot-scope="scope">
               <el-popover trigger="hover" placement="top">
                 <p>
                   微信ID:
-                  {{ scope.row.openid || "未绑定微信" }}
+                  {{ scope.row.openid || '未绑定微信' }}
                 </p>
                 <p>
                   密码:
-                  {{ scope.row.password || "未设置密码" }}
+                  {{ scope.row.password || '未设置密码' }}
                 </p>
                 <div slot="reference" class="name-wrapper">
-                  <el-tag size="mini"> {{ scope.row.nickname }} </el-tag>
+                  <el-tag type="success" size="mini">
+                    {{ scope.row.username }}
+                  </el-tag>
                 </div>
               </el-popover>
             </template>
           </el-table-column>
-          <el-table-column label="手机">
+          <el-table-column label="角色" align="left">
             <template slot-scope="scope">
-              {{ scope.row.phone || "未绑定手机" }}
-            </template>
-          </el-table-column>
-          <el-table-column label="邮箱">
-            <template slot-scope="scope">
-              {{ scope.row.email || "未绑定邮箱" }}
+              <el-tag type="danger" size="mini">
+                {{ scope.row.sysRole.description }}
+              </el-tag>
             </template>
           </el-table-column>
           <el-table-column label="头像">
@@ -169,17 +125,11 @@
               >
             </template>
           </el-table-column>
-          <el-table-column label="背景">
-            <template slot-scope="scope">
-              <el-image
-                :src="scope.row.backImg"
-                :preview-src-list="[scope.row.backImg]"
-              ></el-image>
-            </template>
-          </el-table-column>
           <el-table-column label="签名">
             <template slot-scope="scope">
-              {{ scope.row.signature }}
+              <el-tag type="warning" size="mini">
+                {{ scope.row.signature }}
+              </el-tag>
             </template>
           </el-table-column>
           <el-table-column label="启用" align="center">
@@ -198,7 +148,7 @@
                 icon="el-icon-edit"
                 @click.native="editItem(scope.row)"
               >
-                {{ $t("button.edit") }}
+                {{ $t('button.edit') }}
               </el-button>
               <el-button
                 type="text"
@@ -206,7 +156,7 @@
                 icon="el-icon-delete"
                 @click.native="removeItem(scope.row)"
               >
-                {{ $t("button.delete") }}
+                {{ $t('button.delete') }}
               </el-button>
               <el-button
                 type="text"
@@ -254,21 +204,6 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="昵称" prop="nickname">
-              <el-input v-model="form.nickname" minlength="1"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="手机" prop="phone">
-              <el-input v-model="form.phone"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="签名" prop="signature">
               <el-input v-model="form.signature"></el-input>
             </el-form-item>
@@ -283,7 +218,7 @@
                 :headers="token"
                 :on-success="handleAvatarSuccess"
                 :show-file-list="false"
-                :before-upload="(file) => beforeImgUpload(file, 'avatar')"
+                :before-upload="file => beforeImgUpload(file, 'avatar')"
               >
                 <img v-if="form.avatar" :src="form.avatar" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -291,31 +226,9 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="背景图" prop="backImg">
-              <el-upload
-                class="avatar-uploader"
-                v-loading="backImgloading"
-                action="https://api.maiquer.tech/api/upload/image"
-                name="imgFile"
-                :headers="token"
-                :on-success="handleBackImgSuccess"
-                :show-file-list="false"
-                :before-upload="(file) => beforeImgUpload(file, 'backImg')"
-              >
-                <img v-if="form.backImg" :src="form.backImg" class="avatar" />
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              </el-upload>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="角色分配">
-              <el-checkbox-group v-model="roleSet">
-                <el-checkbox
-                  v-for="role in roleArray"
-                  :label="role"
-                  :key="role"
-                ></el-checkbox>
-              </el-checkbox-group>
+              <el-radio v-model="radio" label="1">超级管理员</el-radio>
+              <el-radio v-model="radio" label="2">超市收银员</el-radio>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -326,33 +239,24 @@
         </el-row>
         <el-form-item>
           <el-button type="primary" @click="saveUser">{{
-            $t("button.submit")
+            $t('button.submit')
           }}</el-button>
           <el-button @click.native="formVisible = false">{{
-            $t("button.cancel")
+            $t('button.cancel')
           }}</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
 
-    <el-dialog title="角色分配" :visible.sync="roleDialog.visible" width="25%">
+    <el-dialog title="角色分配" :visible.sync="roleVisible" width="25%">
       <el-form>
-        <el-row>
-          <el-col :span="12">
-            <el-tree
-              :data="roleDialog.roles"
-              ref="roleTree"
-              show-checkbox
-              node-key="roleId"
-              :default-checked-keys="roleDialog.checkedRoleKeys"
-              :props="roleDialog.defaultProps"
-            >
-            </el-tree>
-          </el-col>
-        </el-row>
+        <el-form-item>
+          <el-radio v-model="radio" label="1">超级管理员</el-radio>
+          <el-radio v-model="radio" label="2">超市收银员</el-radio>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="setRole">{{
-            $t("button.submit")
+            $t('button.submit')
           }}</el-button>
         </el-form-item>
       </el-form>
@@ -362,7 +266,7 @@
 
 <script src="./user.js"></script>
 <style rel="stylesheet/scss" lang="scss">
-@import "src/styles/common.scss";
+@import 'src/styles/common.scss';
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
@@ -387,4 +291,3 @@
   display: block;
 }
 </style>
-
