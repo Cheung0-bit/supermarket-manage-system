@@ -14,7 +14,13 @@ export default {
     taskLog: 'Cron Log',
     dict: 'Dict',
     loginLog: 'Login Log',
-    log: 'Bussiness Log',
+    exceptionLog: 'Exception Log',
+    operateLog: 'Operate Log',
+    logtrack: 'LogTrack',
+    core: 'Core Bussiness',
+    merchandise: 'Merchandise',
+    payment: 'Payment',
+    feedback: 'Feedback',
     cfg: 'Config',
     banner: 'Banner',
     article: 'Article',
@@ -33,7 +39,7 @@ export default {
     workFlow: 'Work Flow',
     processDefinition: 'Process Definition',
     workFlowRequest: 'Process Instance',
-    workFlowTask: 'My Tasks'
+    workFlowTask: 'My Tasks',
   },
   navbar: {
     logOut: 'Log Out',
@@ -43,7 +49,7 @@ export default {
     github: 'Github',
     screenfull: 'Screenfull',
     theme: 'Theme',
-    size: 'Global Size'
+    size: 'Global Size',
   },
   login: {
     title: 'SuperMarket Management System',
@@ -53,7 +59,7 @@ export default {
     admin: 'admin',
     cashier: 'cashier',
     username: 'Username',
-    password: 'Password'
+    password: 'Password',
   },
   button: {
     add: 'Add',
@@ -74,13 +80,13 @@ export default {
     resetPwd: 'Reset Password',
     audit: 'Audit',
     pass: 'Accept',
-    reject: 'Reject'
+    reject: 'Reject',
   },
   tags: {
     refresh: 'Refresh',
     close: 'Close',
     closeOthers: 'Close Others',
-    closeAll: 'Close All'
+    closeAll: 'Close All',
   },
   common: {
     mustSelectOne: 'Please select the record to operate!',
@@ -98,8 +104,8 @@ export default {
       thu: 'Thu',
       fri: 'Fri',
       sat: 'Sat',
-      sun: 'Sun'
-    }
+      sun: 'Sun',
+    },
   },
 
   dashboard: {
@@ -117,7 +123,7 @@ export default {
     vedio: 'Vedio',
     direct: 'Direct',
     searchEngine: 'Search engine',
-    userFrom: 'User from'
+    userFrom: 'User from',
   },
   config: {
     name: 'Config Name',
@@ -127,9 +133,9 @@ export default {
     edit: 'Edit Config',
     nameInput: 'Input config name',
     valueInput: 'Input config value',
-    lengthValidation: ' must be between 2 and 20 characters'
+    lengthValidation: ' must be between 2 and 20 characters',
   },
   workflow: {
-    startProcessInstance: 'start'
-  }
-}
+    startProcessInstance: 'start',
+  },
+};

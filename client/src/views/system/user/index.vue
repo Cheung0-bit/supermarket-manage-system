@@ -132,6 +132,20 @@
               </el-tag>
             </template>
           </el-table-column>
+          <el-table-column label="创建时间">
+            <template slot-scope="scope">
+              <el-tag type="info" size="mini">
+                {{ scope.row.createTime }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column label="修改时间">
+            <template slot-scope="scope">
+              <el-tag type="info" size="mini">
+                {{ scope.row.updateTime }}
+              </el-tag>
+            </template>
+          </el-table-column>
           <el-table-column label="启用" align="center">
             <template slot-scope="scope">
               <el-switch

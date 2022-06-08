@@ -21,7 +21,13 @@ export default {
     taskLog: '任务日志',
     dict: '字典管理',
     loginLog: '登录日志',
-    log: '业务日志',
+    exceptionLog: '异常日志',
+    operateLog: '操作日志',
+    logtrack: '业务日志',
+    core: '核心业务',
+    merchandise: '货物管理',
+    payment: '账单管理',
+    feedback: '反馈管理',
     cfg: '参数管理',
     druid: '监控管理',
     swagger: 'Swagger模式',
@@ -35,7 +41,6 @@ export default {
     processDefinition: '流程定义',
     workFlowRequest: '申请列表',
     workFlowTask: '待办任务',
-
   },
   navbar: {
     logOut: '退出登录',
@@ -45,7 +50,7 @@ export default {
     github: '项目地址',
     screenfull: '全屏',
     theme: '换肤',
-    size: '布局大小'
+    size: '布局大小',
   },
   login: {
     title: '小型超市管理系统',
@@ -55,7 +60,7 @@ export default {
     admin: '超级管理员',
     cashier: '收银员',
     username: '账号',
-    password: '密码'
+    password: '密码',
   },
 
   button: {
@@ -77,13 +82,13 @@ export default {
     resetPwd: '重置密码',
     audit: '审批',
     pass: '通过',
-    reject: '拒绝'
+    reject: '拒绝',
   },
   tags: {
     refresh: '刷新页面',
     close: '关闭当前',
     closeOthers: '关闭其他',
-    closeAll: '关闭所有'
+    closeAll: '关闭所有',
   },
   common: {
     mustSelectOne: '请选中操作项!',
@@ -101,8 +106,8 @@ export default {
       thu: '周四',
       fri: '周五',
       sat: '周六',
-      sun: '周日'
-    }
+      sun: '周日',
+    },
   },
   dashboard: {
     newUser: '新增用户',
@@ -118,7 +123,7 @@ export default {
     vedio: '视频广告',
     direct: '直接访问',
     searchEngine: '搜索引擎',
-    userFrom: '用户来源'
+    userFrom: '用户来源',
   },
   config: {
     name: '参数名',
@@ -128,9 +133,9 @@ export default {
     edit: '编辑参数',
     nameInput: '请输入参数名',
     valueInput: '请输入参数值',
-    lengthValidation: '长度在 2 到 20 个字符'
+    lengthValidation: '长度在 2 到 20 个字符',
   },
   workflow: {
-    startProcessInstance: '发起申请'
-  }
-}
+    startProcessInstance: '发起申请',
+  },
+};

@@ -1,0 +1,160 @@
+[
+  {
+    "path": "/system",
+    "component": "layout",
+    "name": "system",
+    "hidden": false,
+    "meta": {
+      "title": "系统管理",
+      "icon": "system"
+    },
+    "children": [
+      {
+        "path": "/mgr",
+        "component": "views/system/user/index",
+        "name": "mgr",
+        "hidden": false,
+        "meta": {
+          "title": "用户管理",
+          "icon": "user"
+        }
+      },
+      {
+        "path": "/role",
+        "component": "views/system/role/index",
+        "name": "role",
+        "hidden": false,
+        "meta": {
+          "title": "角色管理",
+          "icon": "peoples"
+        }
+      },
+      {
+        "path": "/power",
+        "component": "views/system/power/index",
+        "name": "power",
+        "hidden": false,
+        "meta": {
+          "title": "权限管理",
+          "icon": "power"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/core",
+    "component": "layout",
+    "name": "core",
+    "hidden": false,
+    "meta": {
+      "title": "核心业务",
+      "icon": "core"
+    },
+    "children": [
+      {
+        "path": "/merchandise",
+        "component": "views/core/merchandise/index",
+        "name": "merchandise",
+        "hidden": false,
+        "meta": {
+          "title": "货物管理",
+          "icon": "merchandise"
+        }
+      },
+      {
+        "path": "/payment",
+        "component": "views/core/payment/index",
+        "name": "payment",
+        "hidden": false,
+        "meta": {
+          "title": "账单管理",
+          "icon": "payment"
+        }
+      },
+      {
+        "path": "/feedback",
+        "component": "views/core/feedback/index",
+        "name": "feedback",
+        "hidden": false,
+        "meta": {
+          "title": "反馈管理",
+          "icon": "feedback"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/document",
+    "component": "layout",
+    "name": "document",
+    "hidden": false,
+    "meta": {
+      "title": "接口文档",
+      "icon": "documentation"
+    },
+    "children": [
+      {
+        "path": "/swagger",
+        "component": "views/document/swagger/index",
+        "name": "swagger",
+        "hidden": false,
+        "meta": {
+          "title": "Swagger模式",
+          "icon": "swagger"
+        }
+      },
+      {
+        "path": "/knife4j",
+        "component": "views/document/knife4j/index",
+        "name": "knife4j",
+        "hidden": false,
+        "meta": {
+          "title": "Knife4j模式",
+          "icon": "knife4j"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/logtrack",
+    "component": "layout",
+    "name": "logtrack",
+    "hidden": false,
+    "meta": {
+      "title": "日志监控",
+      "icon": "logtrack"
+    },
+    "children": [
+      {
+        "path": "/login-log",
+        "component": "views/logtrack/loginlog/index",
+        "name": "loginLog",
+        "hidden": false,
+        "meta": {
+          "title": "登录日志",
+          "icon": "login-log"
+        }
+      },
+      {
+        "path": "/exception-log",
+        "component": "views/logintrack/exceptionlog/index",
+        "name": "exceptionLog",
+        "hidden": false,
+        "meta": {
+          "title": "异常日志",
+          "icon": "exception-log"
+        }
+      },
+      {
+        "path": "/operateLog",
+        "component": "views/logintrack/operateLog/index",
+        "name": "operateLog",
+        "hidden": false,
+        "meta": {
+          "title": "操作日志",
+          "icon": "operate-log"
+        }
+      }
+    ]
+  }
+]

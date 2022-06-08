@@ -12,14 +12,6 @@
         </el-col>
         <el-col :span="4">
           <el-input
-            v-model="listQuery.powerUrl"
-            size="mini"
-            placeholder="请输入权限路径"
-            @keyup.enter.native="search"
-          ></el-input>
-        </el-col>
-        <el-col :span="4">
-          <el-input
             v-model="listQuery.powerCode"
             size="mini"
             placeholder="请输入权限标识"
@@ -90,13 +82,6 @@
             <template slot-scope="scope">
               <el-tag type="success" size="mini">
                 {{ scope.row.powerName }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column label="权限路径">
-            <template slot-scope="scope">
-              <el-tag type="danger" size="mini">
-                {{ scope.row.powerUrl }}
               </el-tag>
             </template>
           </el-table-column>
@@ -178,11 +163,6 @@
           <el-col :span="12">
             <el-form-item label="权限名称" prop="powerName">
               <el-input v-model="form.powerName" minlength="1"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="权限路径" prop="powerUrl">
-              <el-input v-model="form.powerUrl" minlength="1"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">

@@ -1,0 +1,68 @@
+[
+  {
+    "path": "/merchandise",
+    "component": "layout",
+    "name": "merchandise",
+    "hidden": false,
+    "meta": {
+      "title": "货物管理",
+      "icon": "merchandise"
+    },
+    "children": [
+      {
+        "path": "/merchandise",
+        "component": "views/core/merchandise/index",
+        "name": "merchandise",
+        "hidden": false,
+        "meta": {
+          "title": "货物管理",
+          "icon": "merchandise"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/payment",
+    "component": "layout",
+    "name": "payment",
+    "hidden": false,
+    "meta": {
+      "title": "账单管理",
+      "icon": "payment"
+    },
+    "children": [
+      {
+        "path": "/payment",
+        "component": "views/core/payment/index",
+        "name": "payment",
+        "hidden": false,
+        "meta": {
+          "title": "账单管理",
+          "icon": "payment"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/feedback",
+    "component": "layout",
+    "name": "feedback",
+    "hidden": false,
+    "meta": {
+      "title": "反馈管理",
+      "icon": "feedback"
+    },
+    "children": [
+      {
+        "path": "/feedback",
+        "component": "views/core/feedback/index",
+        "name": "feedback",
+        "hidden": false,
+        "meta": {
+          "title": "反馈管理",
+          "icon": "feedback"
+        }
+      }
+    ]
+  }
+]
