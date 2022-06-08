@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zhanglin.server.mapper.PaymentInfoMapper">
+
+    <resultMap type="PaymentInfo" id="PaymentInfoMap">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="tradeState" column="trade_state" jdbcType="VARCHAR"/>
+        <result property="total" column="total" jdbcType="DECIMAL"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <association property="sysUser" select="top.zhanglin.server.mapper.SysUserMapper.queryByNameSysUser"
+                     column="user_name"
+                     fetchType="eager">
+        </association>
+        <association property="goods" select="top.zhanglin.server.mapper.GoodsMapper.queryByGoodsNameGoods"
+                     column="goods_name"
+                     fetchType="eager">
+        </association>
+    </resultMap>
+
+    <delete id="delete">
+        delete
+        from payment_info
+        where id = #{id}
+    </delete>
+
+    <select id="queryAll" resultMap="PaymentInfoMap">
+        select *
+        from payment_info
+        where concat(ifnull(user_name, ''), ifnull(goods_name, ''), ifnull(order_no, '')) like
+              concat('%', ifnull(#{username}, ''), '%', ifnull(#{goodsName}, ''), '%', ifnull(#{orderNo}, ''), '%')
+    </select>
+
+
+</mapper>
+

@@ -21,6 +21,19 @@
         values (#{logName}, #{username}, #{roleName}, #{url}, #{ip}, #{functionName}, #{inParam}, #{outParam})
     </insert>
 
+    <delete id="delete">
+        delete
+        from log_info
+        where id = #{id}
+    </delete>
+
+    <select id="queryAll" resultMap="LogInfoMap">
+        select *
+        from log_info
+        where concat(ifnull(log_name, ''), ifnull(user_name, ''), ifnull(url, ''))
+                  like concat('%', ifnull(#{logName}, ''), '%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
+    </select>
+
 
 </mapper>
 

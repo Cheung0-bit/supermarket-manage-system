@@ -30,6 +30,9 @@ public class Goods extends BaseEntity implements Serializable {
     @ApiModelProperty(value = "商品类型", name = "goodsType")
     private String goodsType;
 
+    @ApiModelProperty(value = "商品图片", name = "goodsPic")
+    private String goodsPic;
+
     @ApiModelProperty(value = "商品价格", name = "goodsPrice")
     private BigDecimal goodsPrice;
 

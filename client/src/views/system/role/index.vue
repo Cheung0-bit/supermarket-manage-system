@@ -100,14 +100,14 @@
               </el-tag>
             </template>
           </el-table-column>
-          <el-table-column label="创建时间">
+          <el-table-column label="创建时间" sortable prop="createTime">
             <template slot-scope="scope">
               <el-tag type="info" size="mini">
                 {{ scope.row.createTime }}
               </el-tag>
             </template>
           </el-table-column>
-          <el-table-column label="修改时间">
+          <el-table-column label="修改时间" sortable prop="updateTime">
             <template slot-scope="scope">
               <el-tag type="info" size="mini">
                 {{ scope.row.updateTime }}
