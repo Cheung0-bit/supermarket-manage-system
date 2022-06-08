@@ -1,6 +1,6 @@
 *.js linguist-detectable=false
 *.css linguist-language=vue
-*.scss linguist-language=vue
+*.scss linguist-language=scss
 *.html linguist-language=vue
 *.vue linguist-language=java
 *.java linguist-language=java
