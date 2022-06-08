@@ -11,13 +11,85 @@
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <select id="queryAllByRoleId" resultMap="SysPowerMap">
+    <insert id="insert" keyProperty="powerId" useGeneratedKeys="true">
+        insert into sys_power (power_name, power_code, enable)
+        values (#{powerName}, #{powerCode}, #{enable})
+    </insert>
+
+    <!-- 根据 Id 查询权限-->
+    <select id="queryById" resultMap="SysPowerMap">
+        select power_id, power_name, power_code, enable, create_time, update_time
+        from sys_power
+        where power_id = #{powerId}
+        limit 1
+    </select>
+
+    <select id="queryAll" resultMap="SysPowerMap">
+        select *
+        from sys_power
+        where concat(ifnull(power_name, ''), ifnull(power_code, ''))
+                  like
+              concat('%', ifnull(#{powerName}, ''), '%', ifnull(#{powerCode}, ''), '%')
+    </select>
+
+    <!--返回ROLE编号列表-->
+    <select id="queryByRole" resultType="integer">
+        select power_id
+        from sys_role_power
+        where role_id = #{roleId}
+    </select>
+
+    <select id="queryByRoleId" resultMap="SysPowerMap">
         select sp.*
         from sys_power sp
                  left join sys_role_power srp on sp.power_id = srp.power_id
                  left join sys_role sr on srp.role_id = sr.role_id
         where sr.role_id = #{roleId}
     </select>
+
+    <select id="queryByRoleName" resultMap="SysPowerMap">
+        select sp.*
+        from sys_power sp
+                 left join sys_role_power srp on sp.power_id = srp.power_id
+                 left join sys_role sr on srp.role_id = sr.role_id
+        where sr.role_name = #{roleName}
+    </select>
+
+    <!-- 根据 Id 修改权限数据 -->
+    <update id="updateById" parameterType="SysPower">
+        update sys_power
+        set power_name = #{powerName},
+            power_code = #{powerCode},
+            enable     = #{enable}
+        where power_id = #{powerId}
+    </update>
+
+    <update id="setPower">
+        insert into sys_role_power(role_id, power_id)
+        values
+        <foreach collection="powerIds" item="powerId" separator=",">
+            (#{roleId},#{powerId})
+        </foreach>
+    </update>
+
+    <update id="updateEnable">
+        update sys_power
+        set enable = #{enable}
+        where power_id = #{powerId}
+    </update>
+
+    <!-- 根据 Id 删除用户数据 -->
+    <delete id="deleteById">
+        delete
+        from sys_power
+        where power_id = #{powerId}
+    </delete>
+
+    <delete id="deleteByRoleId">
+        delete
+        from sys_role_power
+        where role_id = #{roleId}
+    </delete>
 
 </mapper>
 

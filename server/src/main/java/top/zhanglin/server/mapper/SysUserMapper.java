@@ -80,4 +80,13 @@ public interface SysUserMapper {
      */
     int updatePassword(Integer userId, String password);
 
+    /**
+     * 更改用户角色
+     *
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    int updateRoleId(Integer userId, Integer roleId);
+
 }

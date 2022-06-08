@@ -33,7 +33,7 @@ public class StpInterfaceImpl implements StpInterface {
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
         SysUser sysUser = sysUserMapper.queryByNameSysUser(loginId.toString());
-        List<SysPower> sysPowerList = sysPowerMapper.queryAllByRoleId(sysUser.getSysRole().getRoleId());
+        List<SysPower> sysPowerList = sysPowerMapper.queryByRoleId(sysUser.getSysRole().getRoleId());
         return sysPowerList.stream().map(SysPower::getPowerCode).collect(Collectors.toList());
     }
 

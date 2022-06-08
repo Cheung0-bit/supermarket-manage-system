@@ -44,6 +44,13 @@
         where id = #{userId}
     </update>
 
+    <update id="updateRoleId">
+        update sys_user
+        set role_id = #{roleId}
+        where id = #{userId}
+        limit 1
+    </update>
+
     <delete id="deleteByIdInt">
         delete
         from sys_user

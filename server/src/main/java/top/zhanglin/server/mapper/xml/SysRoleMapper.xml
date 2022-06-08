@@ -12,11 +12,70 @@
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <!--查询单个-->
     <select id="queryById" resultMap="SysRoleMap">
-        select role_id, role_name, description, enable, menu, create_time, update_time
+        select *
         from sys_role
         where role_id = #{roleId}
+        limit 1
     </select>
+
+    <!--角色名称查询-->
+    <select id="queryByRoleName" resultMap="SysRoleMap">
+        select *
+        from sys_role
+        where role_name = #{roleName}
+        limit 1
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="queryAll" resultMap="SysRoleMap">
+        select *
+        from sys_role
+        where concat(ifnull(role_name, ''), ifnull(description, '')) like
+              concat('%', ifnull(#{roleName}, ''), '%', ifnull(#{description}, ''), '%')
+    </select>
+
+    <!--新增-->
+    <insert id="insert" keyProperty="roleId" useGeneratedKeys="true">
+        insert into sys_role(role_name, description, enable)
+        values (#{roleName}, #{description}, #{enable})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sys_role
+        set role_name   = #{roleName},
+            description = #{description},
+            enable      = #{enable}
+        where role_id = #{roleId}
+    </update>
+
+    <!-- 修改用户启用 -->
+    <update id="updateEnable">
+        update sys_role
+        set enable = #{enable}
+        where role_id = #{roleId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from sys_role
+        where role_id = #{roleId}
+    </delete>
+
+    <insert id="addPower">
+        insert into sys_role_power (role_id, power_id)
+        values (#{roleId}, #{powerId})
+    </insert>
+
+    <delete id="deletePower">
+        delete
+        from sys_role_power
+        where role_id = #{roleId}
+          and power_id = #{powerId}
+    </delete>
 
 </mapper>
 

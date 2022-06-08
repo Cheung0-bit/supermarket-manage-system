@@ -4,6 +4,7 @@ import cn.dev33.satoken.util.SaResult;
 import org.springframework.stereotype.Service;
 import top.zhanglin.server.domian.SysUser;
 
+
 /**
  * <用户业务接口>
  *
@@ -81,6 +82,15 @@ public interface SysUserService {
      * @return
      */
     SaResult delete(Integer userId);
+
+    /**
+     * 分配角色
+     *
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    SaResult setRole(Integer userId, Integer roleId);
 
 
 }

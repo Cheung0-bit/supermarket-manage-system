@@ -4,7 +4,6 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.util.SaResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 import top.zhanglin.server.domian.SysUser;
 import top.zhanglin.server.service.SysUserService;
@@ -87,5 +86,19 @@ public class SysUserApi {
             , @RequestParam String confirmPassword) {
         return sysUserService.updatePasswd(oldPassword, newPassword, confirmPassword);
     }
+
+    /**
+     * 分配角色
+     *
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    @PostMapping("/setRole")
+    @ApiOperation(value = "分配角色")
+    public SaResult setRole(@RequestParam Integer userId, @RequestParam Integer roleId) {
+        return sysUserService.setRole(userId, roleId);
+    }
+
 
 }

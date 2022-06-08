@@ -15,9 +15,8 @@ import java.util.HashSet;
 @Service
 public interface SysPowerService {
 
-
     /**
-     * 查询权限
+     * 批量查询
      *
      * @param page
      * @param limit

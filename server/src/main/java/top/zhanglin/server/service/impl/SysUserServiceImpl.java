@@ -129,4 +129,10 @@ public class SysUserServiceImpl implements SysUserService {
         sysUserMapper.deleteByIdInt(userId);
         return SaResult.ok();
     }
+
+    @Override
+    public SaResult setRole(Integer userId, Integer roleId) {
+        sysUserMapper.updateRoleId(userId, roleId);
+        return SaResult.ok();
+    }
 }

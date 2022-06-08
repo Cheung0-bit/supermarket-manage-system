@@ -323,15 +323,11 @@ export default {
       }
     },
     setRole() {
-      var checkedRoleKeys = this.$refs.roleTree.getCheckedKeys();
-      var roleIds = '';
-      for (var index in checkedRoleKeys) {
-        roleIds += checkedRoleKeys[index] + ',';
-      }
       var data = {
         userId: this.selRow.id,
-        roleIds: roleIds.slice(0, -1),
+        roleId: this.radio,
       };
+      console.log(data);
       setRole(data).then(response => {
         this.roleVisible = false;
         this.fetchData();

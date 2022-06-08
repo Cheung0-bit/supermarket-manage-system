@@ -54,7 +54,7 @@ public class BaseServiceImpl implements BaseService {
     public SaResult getInfo() {
         HashMap<String, Object> account = new HashMap<>();
         SysUser sysUser = sysUserMapper.queryByNameSysUser(StpUtil.getLoginId().toString());
-        List<SysPower> sysPowerList = sysPowerMapper.queryAllByRoleId(sysUser.getSysRole().getRoleId());
+        List<SysPower> sysPowerList = sysPowerMapper.queryByRoleId(sysUser.getSysRole().getRoleId());
         List<String> permissions = sysPowerList.stream().map(SysPower::getPowerCode).collect(Collectors.toList());
         account.put("profile", sysUser);
         account.put("permissions", permissions);
