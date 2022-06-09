@@ -1,23 +1,32 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
-export function getList(params) {
+export function getLogintList(params) {
   return request({
-    url: '/log/list',
-    method: 'get',
-    params
-  })
+    url: '/log/queryAllLogin',
+    method: 'post',
+    params,
+  });
 }
 
-export function queryByUser() {
+export function getExceptionList(params) {
   return request({
-    url:'/log/queryByUser',
-    method: 'get'
-  })
+    url: '/log/queryAllException',
+    method: 'post',
+    params,
+  });
 }
 
-export function clear() {
+export function getOperateList(params) {
   return request({
-    url: '/log',
-    method: 'delete'
-  })
+    url: '/log/queryAllOperate',
+    method: 'post',
+    params,
+  });
+}
+
+export function deleteLog(logId) {
+  return request({
+    url: `/log/delete/${logId}`,
+    method: 'delete',
+  });
 }

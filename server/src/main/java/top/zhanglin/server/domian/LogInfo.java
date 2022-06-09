@@ -23,6 +23,7 @@ public class LogInfo extends BaseEntity implements Serializable {
     public static final String LOGIN = "登录日志";
 
     public static final String EXCEPTION = "异常日志";
+
     public static final String QUERY = "查询日志";
 
     public static final String INSERT = "插入日志";

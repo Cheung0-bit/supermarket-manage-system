@@ -7,15 +7,15 @@ import request from '@/utils/request';
 
 export function getList(params) {
   return request({
-    url: '/loginLog/list',
-    method: 'get',
+    url: '/payment/queryAll',
+    method: 'post',
     params,
   });
 }
 
-export function clear() {
+export function remove(paymentId) {
   return request({
-    url: '/loginLog',
+    url: `/payment/delete/${paymentId}`,
     method: 'delete',
   });
 }

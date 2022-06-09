@@ -71,6 +71,7 @@ export default {
     deploy: 'Deploy',
     search: 'Search',
     reset: 'Reset',
+    reply: 'Reply',
     submit: 'Submit',
     cancel: 'Cancel',
     close: 'Close',

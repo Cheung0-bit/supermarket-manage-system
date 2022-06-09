@@ -39,7 +39,7 @@
         from log_info
         where concat(ifnull(user_name, ''), ifnull(url, ''))
             like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
-          and log_name = #{"登录日志"}
+          and log_name = '登录日志'
     </select>
 
     <select id="queryAllException" resultMap="LogInfoMap">
@@ -47,7 +47,7 @@
         from log_info
         where concat(ifnull(user_name, ''), ifnull(url, ''))
             like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
-          and log_name = #{"异常日志"}
+          and log_name = '异常日志'
     </select>
 
     <select id="queryAllOperate" resultMap="LogInfoMap">
@@ -55,8 +55,8 @@
         from log_info
         where concat(ifnull(user_name, ''), ifnull(url, ''))
             like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
-          and log_name != #{"登录日志"}
-          and log_name != #{"异常日志"}
+          and log_name != '登录日志'
+          and log_name != '异常日志'
     </select>
 
 

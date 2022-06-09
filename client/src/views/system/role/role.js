@@ -95,7 +95,7 @@ export default {
     },
     // 重置
     reset() {
-      this.listQuery.roleNmae = '';
+      this.listQuery.roleName = '';
       this.listQuery.description = '';
       this.listQuery.page = 1;
       this.fetchData();

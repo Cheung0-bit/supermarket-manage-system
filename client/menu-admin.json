@@ -137,7 +137,7 @@
       },
       {
         "path": "/exception-log",
-        "component": "views/logintrack/exceptionlog/index",
+        "component": "views/logtrack/exceptionlog/index",
         "name": "exceptionLog",
         "hidden": false,
         "meta": {
@@ -147,7 +147,7 @@
       },
       {
         "path": "/operateLog",
-        "component": "views/logintrack/operateLog/index",
+        "component": "views/logtrack/operatelog/index",
         "name": "operateLog",
         "hidden": false,
         "meta": {

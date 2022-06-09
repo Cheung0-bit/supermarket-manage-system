@@ -1,15 +1,14 @@
-import { getList, remove } from '@/api/system/payment';
+import { getOperateList, deleteLog } from '@/api/system/log';
 
 export default {
-  name: 'payment',
+  name: 'operatelog',
   data() {
     return {
       listQuery: {
         page: 1,
-        limit: 5,
+        limit: 10,
         username: undefined,
-        goodsName: undefined,
-        orderNo: undefined,
+        url: undefined,
       },
       total: 0,
       list: null,
@@ -35,11 +34,9 @@ export default {
     init() {
       this.fetchData();
     },
-    // 获取用户信息
     fetchData() {
       this.listLoading = true;
-      console.log(this.listQuery);
-      getList(this.listQuery).then(response => {
+      getOperateList(this.listQuery).then(response => {
         const { data } = response.data;
         this.list = data.dataCurrentPage;
         this.listLoading = false;
@@ -54,8 +51,7 @@ export default {
     // 重置
     reset() {
       this.listQuery.username = '';
-      this.listQuery.goodsName = '';
-      this.listQuery.orderNo = '';
+      this.listQuery.url = '';
       this.listQuery.page = 1;
       this.fetchData();
     },
@@ -84,6 +80,13 @@ export default {
     handleCurrentChange(currentRow, oldCurrentRow) {
       this.selRow = currentRow;
     },
+    resetForm() {
+      this.form = {
+        roleName: '',
+        description: '',
+        enable: true,
+      };
+    },
     checkSel() {
       if (this.selRow && this.selRow.id) {
         return true;
@@ -100,14 +103,14 @@ export default {
     },
     remove() {
       if (this.checkSel()) {
-        var paymentId = this.selRow.id;
+        var logId = this.selRow.id;
         this.$confirm('确定删除该记录?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning',
         })
           .then(() => {
-            remove(paymentId)
+            deleteLog(logId)
               .then(response => {
                 this.$message({
                   message: '删除成功',

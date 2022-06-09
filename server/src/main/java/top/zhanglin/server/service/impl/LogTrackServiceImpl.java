@@ -38,12 +38,12 @@ public class LogTrackServiceImpl implements LogTrackService {
             return SaResult.data(logInfoList);
         } else {
             Page<LogInfo> logInfoPage;
-            if (logName.equals(LogInfo.LOGIN)) {
-                logInfoPage = PageHelper.startPage(page, limit).doSelectPage(() -> logTrackMapper.queryAllLogin(username, url));
-            } else if (logName.equals(LogInfo.EXCEPTION)) {
-                logInfoPage = PageHelper.startPage(page, limit).doSelectPage(() -> logTrackMapper.queryAllException(username, url));
-            } else {
+            if (logName == null) {
                 logInfoPage = PageHelper.startPage(page, limit).doSelectPage(() -> logTrackMapper.queryAllOperate(username, url));
+            } else if (logName.equals(LogInfo.LOGIN)) {
+                logInfoPage = PageHelper.startPage(page, limit).doSelectPage(() -> logTrackMapper.queryAllLogin(username, url));
+            } else {
+                logInfoPage = PageHelper.startPage(page, limit).doSelectPage(() -> logTrackMapper.queryAllException(username, url));
             }
             Paging<LogInfo> logInfoPaging = new Paging<>(logInfoPage);
             return SaResult.data(logInfoPaging);

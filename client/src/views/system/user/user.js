@@ -111,7 +111,7 @@ export default {
     },
     // 重置
     reset() {
-      this.listQuery.usernmae = '';
+      this.listQuery.username = '';
       this.listQuery.page = 1;
       this.fetchData();
     },
@@ -181,7 +181,6 @@ export default {
             roleId: this.radio,
           };
           form['sysRole'] = sysRole;
-          console.log(form);
           saveUser(form).then(response => {
             this.$message({
               message: '提交成功',

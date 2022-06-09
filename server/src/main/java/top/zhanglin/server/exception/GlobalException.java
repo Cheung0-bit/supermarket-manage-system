@@ -50,23 +50,23 @@ public class GlobalException {
         // 不同异常返回不同状态码
         AjaxJson aj = null;
         if (e instanceof NotLoginException) {
-            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), false);
+            logInfo = LogUtil.generateLogInfo("handlerException", LogInfo.EXCEPTION, e.getMessage(), false);
             NotLoginException ee = (NotLoginException) e;
             aj = AjaxJson.getNotLogin().setMsg(ee.getMessage());
         } else if (e instanceof NotRoleException) {
-            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), true);
+            logInfo = LogUtil.generateLogInfo("handlerException", LogInfo.EXCEPTION, e.getMessage(), true);
             NotRoleException ee = (NotRoleException) e;
             aj = AjaxJson.getNotJur("无此角色：" + ee.getRole());
         } else if (e instanceof NotPermissionException) {
-            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), true);
+            logInfo = LogUtil.generateLogInfo("handlerException", LogInfo.EXCEPTION, e.getMessage(), true);
             NotPermissionException ee = (NotPermissionException) e;
             aj = AjaxJson.getNotJur("无此权限：" + ee.getPermission());
         } else if (e instanceof DisableLoginException) {
-            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), true);
+            logInfo = LogUtil.generateLogInfo("handlerException", LogInfo.EXCEPTION, e.getMessage(), true);
             DisableLoginException ee = (DisableLoginException) e;
             aj = AjaxJson.getNotJur("账号被封禁：" + ee.getDisableTime() + "秒后解封");
         } else {    // 普通异常, 输出：500 + 异常信息
-            logInfo = LogUtil.generateLogInfo("handlerException", "异常信息", e.getMessage(), true);
+            logInfo = LogUtil.generateLogInfo("handlerException", LogInfo.EXCEPTION, e.getMessage(), true);
             aj = AjaxJson.getError(e.getMessage());
         }
         logTrackMapper.insert(logInfo);

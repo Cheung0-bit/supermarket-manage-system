@@ -73,6 +73,7 @@ export default {
     deploy: '部署',
     search: '搜索',
     reset: '重置',
+    reply: '回复',
     submit: '提交',
     cancel: '取消',
     close: '关闭',
