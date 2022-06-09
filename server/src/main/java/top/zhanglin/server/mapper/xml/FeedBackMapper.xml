@@ -16,6 +16,12 @@
         </association>
     </resultMap>
 
+    <update id="updateReplyInt">
+        update feed_back
+        set reply = #{reply}
+        where id = #{feedBackId}
+    </update>
+
     <delete id="delete">
         delete
         from feed_back

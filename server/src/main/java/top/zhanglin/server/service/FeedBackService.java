@@ -27,18 +27,17 @@ public interface FeedBackService {
      * @param limit
      * @param username
      * @param goodsName
-     * @param comment
      * @return
      */
-    SaResult queryAll(Integer page, Integer limit, String username, String goodsName, String comment);
+    SaResult queryAll(Integer page, Integer limit, String username, String goodsName);
 
     /**
      * 回复
-     *
      * @param feedBackId
+     * @param reply
      * @return
      */
-    int reply(Integer feedBackId);
+    SaResult reply(Integer feedBackId,String reply);
 
 
 }

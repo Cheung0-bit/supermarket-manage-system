@@ -31,4 +31,12 @@ public interface FeedBackMapper {
      */
     int delete(Integer id);
 
+    /**
+     * 回复
+     * @param feedBackId
+     * @param reply
+     * @return
+     */
+    int updateReplyInt(Integer feedBackId, String reply);
+
 }

@@ -23,14 +23,31 @@ public interface LogTrackMapper {
     int insert(LogInfo logInfo);
 
     /**
-     * 批量查询
+     * 登录日志
      *
-     * @param logName
      * @param username
      * @param url
      * @return
      */
-    List<LogInfo> queryAll(String logName, String username, String url);
+    List<LogInfo> queryAllLogin(String username, String url);
+
+    /**
+     * 异常日志
+     *
+     * @param username
+     * @param url
+     * @return
+     */
+    List<LogInfo> queryAllException(String username, String url);
+
+    /**
+     * 操作日志
+     *
+     * @param username
+     * @param url
+     * @return
+     */
+    List<LogInfo> queryAllOperate(String username, String url);
 
     /**
      * 删除

@@ -50,10 +50,10 @@ public interface GoodsMapper {
     /**
      * 删除商品
      *
-     * @param goods
+     * @param goodsId
      * @return
      */
-    int delete(Goods goods);
+    int delete(Integer goodsId);
 
 
 }

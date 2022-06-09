@@ -20,6 +20,17 @@ import java.io.Serializable;
 @Alias("LogInfo")
 public class LogInfo extends BaseEntity implements Serializable {
 
+    public static final String LOGIN = "登录日志";
+
+    public static final String EXCEPTION = "异常日志";
+    public static final String QUERY = "查询日志";
+
+    public static final String INSERT = "插入日志";
+
+    public static final String UPDATE = "更新日志";
+
+    public static final String DELETE = "删除日志";
+
     @ApiModelProperty(value = "日志编号", name = "id")
     private Long id;
 

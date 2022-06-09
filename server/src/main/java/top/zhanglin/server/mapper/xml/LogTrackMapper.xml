@@ -34,6 +34,31 @@
                   like concat('%', ifnull(#{logName}, ''), '%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
     </select>
 
+    <select id="queryAllLogin" resultMap="LogInfoMap">
+        select *
+        from log_info
+        where concat(ifnull(user_name, ''), ifnull(url, ''))
+            like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
+          and log_name = #{"登录日志"}
+    </select>
+
+    <select id="queryAllException" resultMap="LogInfoMap">
+        select *
+        from log_info
+        where concat(ifnull(user_name, ''), ifnull(url, ''))
+            like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
+          and log_name = #{"异常日志"}
+    </select>
+
+    <select id="queryAllOperate" resultMap="LogInfoMap">
+        select *
+        from log_info
+        where concat(ifnull(user_name, ''), ifnull(url, ''))
+            like concat('%', ifnull(#{username}, ''), '%', ifnull(#{url}, ''), '%')
+          and log_name != #{"登录日志"}
+          and log_name != #{"异常日志"}
+    </select>
+
 
 </mapper>
 

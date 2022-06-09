@@ -37,9 +37,9 @@ public class Goods extends BaseEntity implements Serializable {
     private BigDecimal goodsPrice;
 
     @ApiModelProperty(value = "商品库存", name = "stock")
-    private Integer stock;
+    private Integer stock = 0;
 
     @ApiModelProperty(value = "商品购买量", name = "buyCount")
-    private Integer buyCount;
+    private Integer buyCount = 0;
 
 }
