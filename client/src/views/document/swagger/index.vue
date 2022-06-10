@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="block">
       <iframe
-        src="https://api.maiquer.tech/swagger-ui/index.html"
+        src="http://120.26.49.19:8090/swagger-ui/index.html"
         width="100%"
         height="768px"
         frameborder="0"
@@ -12,8 +12,6 @@
   </div>
 </template>
 
-
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import "src/styles/common.scss";
+@import 'src/styles/common.scss';
 </style>
-
